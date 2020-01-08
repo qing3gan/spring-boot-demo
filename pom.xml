@@ -9,11 +9,32 @@
     <version>1.0-SNAPSHOT</version>
 
     <!--spring boot提供的默认配置（JDK，编码，插件）和依赖管理（版本号）-->
-    <parent>
+    <!--<parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.4.RELEASE</version>
-    </parent>
+    </parent>-->
+
+    <!--需要依赖自己的parent时，则手动配置（JDK，编码，插件）和依赖管理（版本号）-->
+    <!--项目编码-->
+    <properties>
+        <project.build.sourceEncoding>1.8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>1.8</project.reporting.outputEncoding>
+    </properties>
+
+    <!--依赖管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.0.4.RELEASE</version>
+                <!--指定依赖类型和依赖范围-->
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <!--依赖-->
     <dependencies>
