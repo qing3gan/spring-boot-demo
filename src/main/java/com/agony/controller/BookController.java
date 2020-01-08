@@ -1,6 +1,7 @@
 package com.agony.controller;
 
 import com.agony.bean.Book;
+import com.agony.bean.Books;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableConfigurationProperties(Book.class)
 public class BookController {
     @Autowired
-    Book book;
+    private Book book;
+
+    @Autowired
+    private Books books;
 
     @GetMapping("/book")
     public String book() {
-        return book.toString();
+        return book.toString() + "\n" + books.toString();
     }
 }

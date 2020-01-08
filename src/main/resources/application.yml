@@ -1,0 +1,34 @@
+# SpringBoot加载配置文件（加载到Spring Environment中）顺序：
+# project/config -> project -> classpath:project/src/main/resources/config -> classpath:project/src/main/resources
+# 默认配置文件名application.properties|yml, 指定配置文件名启动参数--spring.config.name|--spring.config.location=classpath:/
+server:
+  port: 8081
+  # 配置https connector（关闭http connector）
+  ssl:
+    key-store: localhttps.cert
+    key-alias: tomcathttps
+    key-store-password: qing3gan
+# 类型安全配置
+book1:
+  name: 红楼梦
+  author: 曹雪芹
+  price: 20
+  favorites:
+    - 贾宝玉
+    - 林黛玉
+book2:
+  books:
+    - name: 三国演义
+      author: 罗贯中
+      price: 30
+      favorites:
+        - 刘备
+        - 关羽
+        - 张飞
+    - name: 水浒传
+      author: 施耐庵
+      price: 40
+      favorites:
+        - 晁盖
+        - 鲁智深
+        - 李逵
