@@ -32,3 +32,7 @@ book2:
         - 晁盖
         - 鲁智深
         - 李逵
+# profile优先级：配置文件 -> application
+spring:
+  profiles:
+    active: dev

@@ -19,6 +19,7 @@ public class App {
     public static void main(String[] args) {
 //        SpringApplication.run(App.class, args);
         SpringApplicationBuilder builder = new SpringApplicationBuilder(App.class);
+        builder.application().setAdditionalProfiles("prod");
         builder.bannerMode(Banner.Mode.OFF).run(args);
     }
 }
