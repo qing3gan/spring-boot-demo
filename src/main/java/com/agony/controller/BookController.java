@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * desc
@@ -25,5 +26,13 @@ public class BookController {
     @GetMapping("/book")
     public String book() {
         return book.toString() + "\n" + books.toString();
+    }
+
+    @GetMapping("/books")
+    public ModelAndView books() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("books", books.getBooks());
+        mv.setViewName("books");
+        return mv;
     }
 }
