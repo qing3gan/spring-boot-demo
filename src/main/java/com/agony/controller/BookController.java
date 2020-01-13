@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 /**
  * desc
  *
@@ -24,9 +26,15 @@ public class BookController {
     @Autowired
     private Books books;
 
-    @GetMapping("/book")
-    public String book() {
+    @GetMapping("/book/string")
+    public String bookString() {
         return book.toString() + "\n" + books.toString();
+    }
+
+    @GetMapping("/book/json")
+    public Book bookJson() {
+        book.setPublishDate(new Date());
+        return book;
     }
 
     @GetMapping("/books/{template}")

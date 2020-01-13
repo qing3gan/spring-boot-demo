@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Tomcat配置Bean
+ * Tomcat配置Bean（SpringBoot有默认配置）
  *
  * @author agony
  * @date 2020/1/5 23:50
  */
 
 @Configuration
-public class TomcatConfig {
+public class MyTomcatConfig {
     @Bean
     TomcatServletWebServerFactory tomcatServletWebServerFactory() {
         TomcatServletWebServerFactory tomcatServletWebServerFactory = new TomcatServletWebServerFactory() {

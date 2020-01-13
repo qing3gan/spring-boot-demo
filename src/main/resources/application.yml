@@ -32,7 +32,11 @@ book2:
         - 晁盖
         - 鲁智深
         - 李逵
-# profile优先级：配置文件 -> application
 spring:
+  # profile优先级：配置文件 -> application
   profiles:
     active: dev
+  # 响应编码配置
+  http:
+    encoding:
+      force-response: true
