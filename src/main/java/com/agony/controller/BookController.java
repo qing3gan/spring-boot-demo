@@ -5,6 +5,7 @@ import com.agony.bean.Books;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,11 +29,11 @@ public class BookController {
         return book.toString() + "\n" + books.toString();
     }
 
-    @GetMapping("/books")
-    public ModelAndView books() {
+    @GetMapping("/books/{template}")
+    public ModelAndView books(@PathVariable String template) {
         ModelAndView mv = new ModelAndView();
         mv.addObject("books", books.getBooks());
-        mv.setViewName("books");
+        mv.setViewName("books-" + template);
         return mv;
     }
 }
