@@ -14,8 +14,10 @@ import java.util.List;
 /**
  * 自定义Web Mvc配置
  * 1.HTTPMessageConverter（消息转换器）
+ * 1.1.默认Jackson，默配Gson，自配FastJson
  * 2.ResourceHandler（静态资源处理）
- * 2.1.classpath:resources/META-INF/resources -> resources/resources -> resources/static -> resources/public
+ * 2.1.staticPathPattern默认/**
+ * 2.2.resourceLocation默认classpath:resources/META-INF/resources -> resources/resources -> resources/static -> resources/public
  *
  * @author agony
  * @date 2020/1/13 23:48
