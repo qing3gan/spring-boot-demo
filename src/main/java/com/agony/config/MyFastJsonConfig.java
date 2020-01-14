@@ -9,7 +9,7 @@
 //import java.nio.charset.StandardCharsets;
 //
 ///**
-// * Fastjson配置bean（SpringBoot无默认配置）
+// * FastJson配置bean（SpringBoot无默认配置）
 // *
 // * @author agony
 // * @date 2020/1/13 23:30

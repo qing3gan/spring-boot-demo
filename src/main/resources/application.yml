@@ -40,3 +40,8 @@ spring:
   http:
     encoding:
       force-response: true
+  # 静态资源配置
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
