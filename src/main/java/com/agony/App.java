@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
+ * Spring(Bean) -> Spring Boot(Auto)
  * SpringBootApplication为SpringBoot注解
  * 1.SpringBoot注解EnableAutoConfiguration,SpringBootConfiguration和Spring注解ComponentScan注解组合
  * 2.EnableAutoConfiguration注解表示自动化配置项目中的依赖（此项目中为Spring和SpringMVC）

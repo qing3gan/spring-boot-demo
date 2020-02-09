@@ -43,8 +43,9 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //配置多个路径
         registry
-                .addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
+                .addResourceHandler("/**", "/static/**")
+                .addResourceLocations("/", "classpath:/static/");
     }
 }
