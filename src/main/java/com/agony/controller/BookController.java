@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Date;
 
 /**
- * desc
+ * EnableConfigurationProperties(.class) = Import(EnableConfigurationPropertiesImportSelector.class)
  *
  * @author agony
  * @date 2020/1/7 8:00

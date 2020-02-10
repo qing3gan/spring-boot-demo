@@ -13,14 +13,13 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 /**
- * desc
+ * PostMapping = RequestMapping(post)
  *
  * @author agony
  * @date 2020/1/14 23:01
  */
 @RestController
 public class FileUploadController {
-
     private static final Log logger = LogFactory.getLog(FileUploadController.class);
 
     @PostMapping("/uploads")
