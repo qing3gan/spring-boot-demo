@@ -33,7 +33,7 @@ public class FileUploadController {
             }
         }
         try {
-            for(MultipartFile uploadFile : uploadFiles){
+            for (MultipartFile uploadFile : uploadFiles) {
                 String oldName = uploadFile.getOriginalFilename();
                 String newName = UUID.randomUUID().toString() + oldName.substring(oldName.lastIndexOf('.'));
                 uploadFile.transferTo(new File(folder, newName));

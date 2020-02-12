@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.experimental.PackagePrivate;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +14,7 @@ import java.util.List;
 /**
  * SpringBoot注解ConfigurationProperties表示类型安全配置(Type-safe Configuration Properties)
  * 将配置文件中的数据注入Bean中（prefix）
- *
+ * <p>
  * Annotation Processor编译时注解解析器(生成编译时源码或运行时字节码）
  * Lombok（生成POJO基本方法）
  *

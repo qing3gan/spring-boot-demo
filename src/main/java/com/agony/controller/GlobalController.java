@@ -22,6 +22,7 @@ import java.util.Map;
 public class GlobalController {
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public ModelAndView uploadException(MaxUploadSizeExceededException e, HttpServletResponse response) {
+        //ExceptionHandler: 全局异常捕获
         ModelAndView mv = new ModelAndView();
         mv.addObject("msg", "上传文件大小超出限制！");
         mv.setViewName("error");
@@ -30,6 +31,7 @@ public class GlobalController {
 
     @ModelAttribute(value = "info")
     public Map<String, String> userInfo() {
+        //ModelAttribute: 模型属性
         Map<String, String> map = new HashMap<>();
         map.put("username", "罗贯中");
         map.put("gender", "男");
@@ -38,6 +40,7 @@ public class GlobalController {
 
     @InitBinder("a")
     public void init(WebDataBinder binder) {
+        //InitBinder: 数据编辑器（前后端）
         binder.setFieldDefaultPrefix("a.");
     }
 

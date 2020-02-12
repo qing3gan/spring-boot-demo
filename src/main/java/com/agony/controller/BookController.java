@@ -39,6 +39,7 @@ public class BookController {
 
     @GetMapping("/books/{template}")
     public ModelAndView books(@PathVariable String template) {
+        //PathVariable: URL占位符
         ModelAndView mv = new ModelAndView();
         mv.addObject("books", books.getBooks());
         mv.setViewName("books-" + template);
