@@ -5,6 +5,7 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -18,6 +19,7 @@ import java.util.List;
  * 2.ResourceHandler（静态资源处理）
  * 2.1.staticPathPattern默认/**
  * 2.2.resourceLocation默认classpath:resources/META-INF/resources -> resources/resources -> resources/static -> resources/public
+ * 3.CorsMapping（跨域配置）
  *
  * @author agony
  * @date 2020/1/13 23:48
@@ -47,5 +49,14 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/**", "/static/**")
                 .addResourceLocations("/", "classpath:/static/");
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/cors/**")
+                .allowedHeaders("*")
+                .allowedMethods("*")
+                .maxAge(1800)
+                .allowedOrigins("https://localhost:8082");
     }
 }

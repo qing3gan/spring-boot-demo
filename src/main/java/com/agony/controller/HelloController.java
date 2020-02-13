@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
- * RestController = Controller + RequestMapping
+ * RestController = Rest(Representational State Transfer) + Controller + ResponseBody
  * GetMapping = RequestMapping(get)
  *
  * @author agony

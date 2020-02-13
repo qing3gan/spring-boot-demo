@@ -2,7 +2,7 @@
 # project/config -> project -> classpath:project/src/main/resources/config -> classpath:project/src/main/resources
 # 默认配置文件名application.properties|yml, 指定配置文件名启动参数--spring.config.name|--spring.config.location=classpath:/
 server:
-  port: 8081
+  port: 80
   # 配置https connector（关闭http connector）
   ssl:
     key-store: localhttps.cert

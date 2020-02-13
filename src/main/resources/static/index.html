@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+<div id="add"></div>
+<div id="delete"></div>
+<input type="button" value="add" onclick="addData()"><br>
+<input type="button" value="delete" onclick="deleteData()"><br>
+<script>
+    function addData() {
+        $.ajax({
+            url: 'https://localhost:8081/cors/',
+            type: 'post',
+            data: {args: '1'},
+            success: function (msg) {
+                $('#add').html(msg)
+            }
+        })
+    }
+
+    function deleteData() {
+        $.ajax({
+            url: 'https://localhost:8081/cors/1',
+            type: 'delete',
+            success: function (msg) {
+                $('#delete').html(msg);
+            }
+        })
+    }
+</script>
+</body>
+</html>
