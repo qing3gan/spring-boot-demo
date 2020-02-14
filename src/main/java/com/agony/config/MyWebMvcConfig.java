@@ -6,10 +6,7 @@ import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -27,6 +24,7 @@ import java.util.List;
  * 3.2.前端发起跨域请求，后端处理跨域请求并响应跨域结果（GET/POST/HEAD请求直接响应，DELETE/PUT/自定义请求则需要前端OPTIONS请求探测是否支持当前请求，
  * 后端响应支持结果（支持方法 + 时效），然后在时效内直接响应）
  * 4.Interceptor（拦截器）
+ * 5.ViewController（路径映射，页面跳转）
  *
  * @author agony
  * @date 2020/1/13 23:48
@@ -72,5 +70,10 @@ public class MyWebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new MyInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns(("/hello"));
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
     }
 }
