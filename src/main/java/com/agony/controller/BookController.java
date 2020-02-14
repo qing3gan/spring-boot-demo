@@ -15,6 +15,8 @@ import java.util.Date;
 /**
  * EnableConfigurationProperties(.class) = Import(EnableConfigurationPropertiesImportSelector.class)
  * RequestMapping: HTTP 请求映射到 MVC 和 REST 控制器的处理方法上
+ * Component: 扫描注入
+ * Autowired: 自动注入
  *
  * @author agony
  * @date 2020/1/7 8:00

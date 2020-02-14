@@ -3,7 +3,7 @@ package com.agony.controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * CORS(Cross-Origin-Resource-Sharing)
+ * CORS(Cross-Origin-Resource-Sharing): 跨域资源共享协议
  *
  * @author agony
  * @date 2020/2/13 22:15
@@ -14,12 +14,12 @@ public class CorsController {
     @PostMapping("/")
     @CrossOrigin(value = "https://localhost:8082", maxAge = 1800, allowedHeaders = "*")
     public String add(String args) {
-        return "add:" + args;
+        return "add: " + args;
     }
 
     @DeleteMapping("/{args}")
     @CrossOrigin(value = "https://localhost:8082", maxAge = 1800, allowedHeaders = "*")
     public String delete(@PathVariable String args) {
-        return "delete:" + args;
+        return "delete: " + args;
     }
 }

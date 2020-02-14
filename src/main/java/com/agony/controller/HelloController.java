@@ -2,8 +2,10 @@ package com.agony.controller;
 
 import com.agony.bean.Author;
 import com.agony.bean.Book;
+import com.agony.bean.Hello;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,9 +24,12 @@ import java.util.Map;
 public class HelloController {
     private static final Log logger = LogFactory.getLog(HelloController.class);
 
+    @Autowired
+    private Hello hello;
+
     @GetMapping("/hello")
     public String hello() {
-        return "hello";
+        return hello.sayHello("hello");
     }
 
     @GetMapping("/info")

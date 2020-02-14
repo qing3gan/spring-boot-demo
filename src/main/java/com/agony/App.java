@@ -6,11 +6,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
  * JavaSE(C/S) -> JavaEE(B/S) -> Spring(Bean) -> Spring MVC(Web) -> Spring Boot(Auto)
- * SpringBootApplication为SpringBoot注解
- * 1.SpringBoot注解EnableAutoConfiguration,SpringBootConfiguration和Spring注解ComponentScan注解组合
- * 2.EnableAutoConfiguration注解表示自动化配置项目中的依赖（此项目中为Spring和SpringMVC）
- * 3.SpringBootConfiguration注解表示该类是配置类（可配置Bean）
- * 4.ComponentScan注解表示扫描当前类包路径下的类并注入到容器当中（放在根包下，扫描Service,Repository,Component,Controller,RestController）
+ * SpringBootApplication = EnableAutoConfiguration + SpringBootConfiguration + ComponentScan
+ * EnableAutoConfiguration: 自动化配置项目中的依赖（此项目中为Spring和SpringMVC）
+ * SpringBootConfiguration: 该类是配置类（可配置Bean）
+ * ComponentScan: 扫描当前类包路径下的类并注入到容器当中（放在根包下，扫描Service, Repository, Component, Controller, RestController）
  *
  * @author agony
  * @date 2020/1/5 20:27
