@@ -54,3 +54,8 @@ spring:
       max-file-size: 1MB
       max-request-size: 10MB
       resolve-lazily: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql:///demo?useSSL=false
+    username: root
+    password: root

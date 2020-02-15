@@ -1,4 +1,4 @@
-package com.agony.bean;
+package com.agony.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,6 +27,7 @@ import java.util.List;
 @Setter
 @ToString
 public class Book {
+    private Integer id;
     private String name;
     private String author;
     @JsonIgnore

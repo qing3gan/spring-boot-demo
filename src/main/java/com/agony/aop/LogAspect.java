@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 public class LogAspect {
     private static final Log logger = LogFactory.getLog(LogAspect.class);
 
-    @Pointcut("execution(* com.agony.service.impl.*.*(..))")
+    @Pointcut("execution(* com.agony.service.impl.UserServiceImpl.*(..))")
     public void log() {
     }
 

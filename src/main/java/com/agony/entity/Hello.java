@@ -1,4 +1,4 @@
-package com.agony.bean;
+package com.agony.entity;
 
 /**
  * desc

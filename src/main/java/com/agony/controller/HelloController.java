@@ -1,8 +1,8 @@
 package com.agony.controller;
 
-import com.agony.bean.Author;
-import com.agony.bean.Book;
-import com.agony.bean.Hello;
+import com.agony.entity.Author;
+import com.agony.entity.Book;
+import com.agony.entity.Hello;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
