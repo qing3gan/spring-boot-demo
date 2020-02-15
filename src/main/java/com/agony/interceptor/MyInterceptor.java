@@ -1,6 +1,5 @@
 package com.agony.interceptor;
 
-import com.agony.controller.HelloController;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 拦截器(Interceptor): Spring组件，基于反射(AOP)，依赖Spring容器，处理Action请求(HttpServletRequest)
  * 过滤器(Filter): JavaEE组件(Servlet, Listener)，基于回调，依赖Servlet容器，处理所有请求(ServletRequest)
- *
+ * <p>
  * Server Container -> Filter -> Servlet -> Interceptor -> Controller
  * Filter -> Service -> Dispatcher -> preHandle(true) -> Controller -> postHandle(chain) -> afterCompletion
  *
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2020/2/14 11:00
  */
 public class MyInterceptor implements HandlerInterceptor {
-    private static final Log logger = LogFactory.getLog(HelloController.class);
+    private static final Log logger = LogFactory.getLog(MyInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
