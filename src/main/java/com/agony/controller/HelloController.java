@@ -45,7 +45,7 @@ public class HelloController {
 
     @GetMapping("/byzero")
     public String byzero() {
-        //错误页面优先级: 响应码 -> 通配符 -> 动态 -> 静态
+        // 错误页面优先级: 响应码 -> 通配符 -> 动态 -> 静态
         int i = 1 / 0;
         return "byzero";
     }

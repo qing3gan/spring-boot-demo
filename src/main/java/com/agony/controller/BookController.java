@@ -53,7 +53,7 @@ public class BookController {
 
     @GetMapping("/{template}")
     public ModelAndView books(@PathVariable String template) {
-        //PathVariable: URL占位符
+        // PathVariable: URL占位符
         ModelAndView mv = new ModelAndView();
         mv.addObject("books", books.getBooks());
         mv.setViewName("books-" + template);
@@ -65,7 +65,10 @@ public class BookController {
         Book book = new Book();
         book.setName("西厢记");
         book.setAuthor("王实甫");
+        // jdbc generate insert auto increment id
         int id = bookService.addBook(book);
+        // mybatis generate insert auto increment id
+        id = book.getId();
         logger.info("addBook: " + id);
         logger.info("getBookById: " + bookService.getBookById(id));
         Book book2 = new Book();

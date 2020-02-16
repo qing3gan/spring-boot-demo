@@ -26,8 +26,8 @@ import java.util.Map;
 public class MyErrorController extends BasicErrorController {
     @Autowired
     public MyErrorController(ErrorAttributes errorAttributes, ServerProperties serverProperties, List<ErrorViewResolver> errorViewResolvers) {
-        //Controller: 扫描注入
-        //Autowired: 自动注入
+        // Controller: 扫描注入
+        // Autowired: 自动注入
         super(errorAttributes, serverProperties.getError(), errorViewResolvers);
     }
 

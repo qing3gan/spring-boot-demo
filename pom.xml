@@ -21,8 +21,11 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot-dependencies.version>2.0.4.RELEASE</spring-boot-dependencies.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <fastjson.version>1.2.47</fastjson.version>
+        <mybatis.version>1.3.2</mybatis.version>
+        <druid.version>1.1.9</druid.version>
     </properties>
 
     <!--依赖管理-->
@@ -31,7 +34,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.0.4.RELEASE</version>
+                <version>${spring-boot-dependencies.version}</version>
                 <!--指定依赖类型和依赖范围-->
                 <type>pom</type>
                 <scope>import</scope>
@@ -82,7 +85,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
+            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -93,9 +96,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>-->
+        <!--包含jdbc依赖-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -105,7 +114,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.9</version>
+            <version>${druid.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -121,7 +130,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-maven-plugin.version}</version>
+                <version>${spring-boot-dependencies.version}</version>
                 <!--当所依赖的其他模块，有启动类的时候，需要以下配置，指定唯一启动类-->
                 <configuration>
                     <!--指定该Main Class为全局的唯一入口-->
@@ -147,5 +156,16 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resource</directory>
+            </resource>
+        </resources>
     </build>
 </project>
