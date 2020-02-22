@@ -29,7 +29,7 @@ public class BookDaoImpl implements BookDao {
     public int addBook(Book book) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO book(name,author) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO t_book(name,author) VALUES (?,?)", Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, book.getName());
             ps.setString(2, book.getAuthor());
             return ps;
@@ -39,21 +39,21 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public int updateBook(Book book) {
-        return jdbcTemplate.update("UPDATE book SET name=?,author=? WHERE id=?", book.getName(), book.getAuthor(), book.getId());
+        return jdbcTemplate.update("UPDATE t_book SET name=?,author=? WHERE id=?", book.getName(), book.getAuthor(), book.getId());
     }
 
     @Override
     public int deleteBookById(Integer id) {
-        return jdbcTemplate.update("DELETE FROM book WHERE id=?", id);
+        return jdbcTemplate.update("DELETE FROM t_book WHERE id=?", id);
     }
 
     @Override
     public Book getBookById(Integer id) {
-        return jdbcTemplate.queryForObject("SELECT id,name,author FROM book WHERE id=?", new BeanPropertyRowMapper<>(Book.class), id);
+        return jdbcTemplate.queryForObject("SELECT id,name,author FROM t_book WHERE id=?", new BeanPropertyRowMapper<>(Book.class), id);
     }
 
     @Override
     public List<Book> getAllBooks() {
-        return jdbcTemplate.query("SELECT id,name,author FROM book", new BeanPropertyRowMapper<>(Book.class));
+        return jdbcTemplate.query("SELECT id,name,author FROM t_book", new BeanPropertyRowMapper<>(Book.class));
     }
 }

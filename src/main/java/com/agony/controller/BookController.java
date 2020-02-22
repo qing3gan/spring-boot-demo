@@ -7,6 +7,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * EnableConfigurationProperties(.class) = Import(EnableConfigurationPropertiesImportSelector.class)
@@ -79,5 +82,40 @@ public class BookController {
         logger.info("getBookById: " + bookService.getBookById(id));
         logger.info("deleteBookById: " + bookService.deleteBookById(id));
         logger.info("getAllBooks: " + bookService.getAllBooks());
+    }
+
+    @GetMapping("/findAll")
+    public void findAll() {
+        PageRequest pageable = PageRequest.of(2, 3);
+        Page<Book> page = bookService.getBooksByPage(pageable);
+        logger.info("total pages: " + page.getTotalPages());
+        logger.info("total elements: " + page.getTotalElements());
+        logger.info("content: " + page.getContent());
+        logger.info("number: " + (page.getNumber() + 1));
+        logger.info("number of elements: " + page.getNumberOfElements());
+        logger.info("size: " + page.getSize());
+    }
+
+    @GetMapping("/search")
+    public void search() {
+        List<Book> books = bookService.getBooksByIdAndAuthor(7, "鲁迅");
+        List<Book> books2 = bookService.getBooksByAuthorStartingWish("吴");
+        List<Book> books3 = bookService.getBooksByIdAndName(8, "西");
+        List<Book> books4 = bookService.getBooksByPriceGreaterThan(30f);
+        Book book = bookService.getMaxIdBook();
+        logger.info("books: " + books);
+        logger.info("books2: " + books2);
+        logger.info("books3: " + books3);
+        logger.info("books4: " + books4);
+        logger.info("book: " + book);
+    }
+
+    @GetMapping("/save")
+    public void save() {
+        Book book = new Book();
+        book.setAuthor("鲁迅");
+        book.setName("呐喊");
+        book.setPrice(23f);
+        bookService.saveBook(book);
     }
 }

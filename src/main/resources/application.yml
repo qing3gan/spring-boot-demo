@@ -56,6 +56,16 @@ spring:
       resolve-lazily: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql:///demo?useSSL=false
+    url: jdbc:mysql:///jpa?useSSL=false
     username: root
     password: root
+  jpa:
+    show-sql: true
+    database: mysql
+    hibernate:
+      # 项目启动时根据实体类更新数据库中对应的表
+      ddl-auto: update
+    properties:
+      hiernate:
+        # 数据库方言
+        dialect: org.hibernate.dialect.MySQL57Dialect
