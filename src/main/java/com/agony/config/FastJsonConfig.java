@@ -15,7 +15,7 @@
 // * @date 2020/1/13 23:30
 // */
 //@Configuration
-//public class MyFastJsonConfig {
+//public class FastJsonConfig {
 //    @Bean
 //    FastJsonHttpMessageConverter fastJsonHttpMessageConverter() {
 //        FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();

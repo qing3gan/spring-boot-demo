@@ -54,18 +54,41 @@ spring:
       max-file-size: 1MB
       max-request-size: 10MB
       resolve-lazily: false
+  # 单数据源
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    url: jdbc:mysql:///demo?useSSL=false
+##    url: jdbc:mysql:///jpa?useSSL=false
+#    username: root
+#    password: root
+#  jpa:
+#    show-sql: true
+#    database: mysql
+#    hibernate:
+#      # 项目启动时根据实体类更新数据库中对应的表
+#      ddl-auto: update
+#    properties:
+#      hiernate:
+#        # 数据库方言
+#        dialect: org.hibernate.dialect.MySQL57Dialect
+  # 多数据源
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql:///jpa?useSSL=false
-    username: root
-    password: root
+    one:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql:///multi_source_1?useSSL=false
+      username: root
+      password: root
+    two:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql:///multi_source_2?useSSL=false
+      username: root
+      password: root
   jpa:
-    show-sql: true
-    database: mysql
-    hibernate:
-      # 项目启动时根据实体类更新数据库中对应的表
-      ddl-auto: update
+    # 与单数据源配置有区别，配置均从JpaProperties.getProperties()中获取
     properties:
-      hiernate:
-        # 数据库方言
+      show-sql: true
+      database: mysql
+      hibernate:
         dialect: org.hibernate.dialect.MySQL57Dialect
+        hbm2ddl:
+          auto: update

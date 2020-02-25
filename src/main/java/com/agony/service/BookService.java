@@ -13,15 +13,31 @@ import java.util.List;
  * @date 2020/2/15 16:39
  */
 public interface BookService {
-    int addBook(Book book);
+    /* JdbcTemplate */
 
-    int updateBook(Book book);
+    int addBookByJdbc(Book book);
 
-    int deleteBookById(Integer id);
+    int updateBookByJdbc(Book book);
 
-    Book getBookById(Integer id);
+    int deleteBookByIdByJdbc(Integer id);
 
-    List<Book> getAllBooks();
+    Book getBookByIdByJdbc(Integer id);
+
+    List<Book> getAllBooksByJdbc();
+
+    /* Mybatis */
+
+    int addBookByMapper(Book book);
+
+    int updateBookByMapper(Book book);
+
+    int deleteBookByIdByMapper(Integer id);
+
+    Book getBookByIdByMapper(Integer id);
+
+    List<Book> getAllBooksByMapper();
+
+    /* Spring data jpa */
 
     void saveBook(Book book);
 

@@ -3,12 +3,14 @@ package com.agony.service.impl;
 import com.agony.dao.BookDao;
 import com.agony.dao.BookJpa;
 import com.agony.entity.Book;
+import com.agony.mapper.BookMapper;
 import com.agony.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,35 +21,72 @@ import java.util.List;
  */
 @Service
 public class BookServiceImpl implements BookService {
+    /**
+     * JdbcTemplate
+     */
     @Autowired
     private BookDao bookDao;
 
+    /**
+     * Mybatis
+     */
+    @Resource
+    private BookMapper bookMapper;
+
+    /**
+     * Spring data jpa
+     */
     @Autowired
     private BookJpa bookJpa;
 
     @Override
-    public int addBook(Book book) {
+    public int addBookByJdbc(Book book) {
         return bookDao.addBook(book);
     }
 
     @Override
-    public int updateBook(Book book) {
+    public int updateBookByJdbc(Book book) {
         return bookDao.updateBook(book);
     }
 
     @Override
-    public int deleteBookById(Integer id) {
+    public int deleteBookByIdByJdbc(Integer id) {
         return bookDao.deleteBookById(id);
     }
 
     @Override
-    public Book getBookById(Integer id) {
+    public Book getBookByIdByJdbc(Integer id) {
         return bookDao.getBookById(id);
     }
 
     @Override
-    public List<Book> getAllBooks() {
+    public List<Book> getAllBooksByJdbc() {
         return bookDao.getAllBooks();
+    }
+
+    @Override
+    public int addBookByMapper(Book book) {
+        return bookMapper.addBook(book);
+    }
+
+    @Override
+    public int updateBookByMapper(Book book) {
+        return bookMapper.updateBook(book);
+    }
+
+    @Override
+    public int deleteBookByIdByMapper(Integer id) {
+        return bookMapper.deleteBookById(id);
+    }
+
+    @Override
+    public Book getBookByIdByMapper(Integer id) {
+        return bookMapper.getBookById(id);
+    }
+
+    @Override
+    public List<Book> getAllBooksByMapper() {
+        return bookMapper.getAllBooks();
     }
 
     @Override

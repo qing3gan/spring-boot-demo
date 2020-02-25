@@ -30,7 +30,7 @@ import java.util.List;
  * @date 2020/1/13 23:48
  */
 @Configuration
-public class MyWebMvcConfig implements WebMvcConfigurer {
+public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
