@@ -26,6 +26,7 @@ import java.util.List;
 
 /**
  * EnableConfigurationProperties(.class) = Import(EnableConfigurationPropertiesImportSelector.class)
+ * EnableConfigurationPropertiesImportSelector: 绑定外部属性到.class上
  * RequestMapping: HTTP 请求映射到 MVC 和 REST 控制器的处理方法上
  * Component: 扫描注入
  * Resource = (Autowired + Qualifier): 自动注入(默认byName，JSR-250规范定义的注解)

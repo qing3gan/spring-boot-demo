@@ -4,7 +4,12 @@ import com.agony.dao1.UserJpaOne;
 import com.agony.dao2.UserJpaTwo;
 import com.agony.model.User;
 import com.agony.service.UserService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    private static final Log logger = LogFactory.getLog(UserController.class);
+
     @Autowired
     private UserService userService;
 
@@ -50,5 +57,27 @@ public class UserController {
         user2.setGender("男");
         user2.setAge(80);
         userJpaTwo.save(user2);
+    }
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
+
+    @GetMapping("/redis")
+    public void redis() {
+        ValueOperations<String, String> ops1 = stringRedisTemplate.opsForValue();
+        ops1.set("name", "鲁迅");
+        String name = ops1.get("name");
+        logger.info("redis name: " + name);
+        ValueOperations ops2 = redisTemplate.opsForValue();
+        User user = new User();
+        user.setName("泰戈尔");
+        user.setGender("男");
+        user.setAge(88);
+        ops2.set("user", user);
+        User _user = (User) ops2.get("user");
+        logger.info("redis user: " + _user);
     }
 }
