@@ -8,7 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
- * JavaSE(C/S) -> JavaEE(B/S) -> Spring(Bean) -> Spring MVC(Web) -> Spring Boot(Auto)
+ * JavaSE(C/S) -> JavaEE(B/S) -> Spring(Bean) -> Spring MVC(Web) -> Spring Boot(Auto) -> Spring Cloud(Microservice)
  * SpringBootApplication = EnableAutoConfiguration + SpringBootConfiguration + ComponentScan
  * EnableAutoConfiguration: 自动化配置项目中的依赖（此项目中为Spring和SpringMVC），exclude除去具体自动化配置类
  * SpringBootConfiguration: 该类是配置类（可配置Bean）

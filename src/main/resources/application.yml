@@ -93,13 +93,30 @@ spring:
         hbm2ddl:
           auto: update
   redis:
-    database: 0
-    host: localhost
-    port: 6379
+    # 单数据源
+#    database: 0
+#    host: 192.168.37.130
+#    port: 6379
 #    password: root
-    jedis:
-      pool:
-        max-active: 8
+#    jedis:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        max-wait: -1ms
+#        min-idle: 8
+    cluster:
+      ports:
+        - 8001
+        - 8002
+        - 8003
+        - 8004
+        - 8005
+        - 8006
+        - 8007
+        - 8008
+      host: 192.168.37.130
+      poolConfig:
+        max-total: 8
         max-idle: 8
-        max-wait: -1ms
+        max-wait-timeout: -1
         min-idle: 8
