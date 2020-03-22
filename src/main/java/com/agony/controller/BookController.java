@@ -30,7 +30,7 @@ import java.util.List;
  * RequestMapping: HTTP 请求映射到 MVC 和 REST 控制器的处理方法上
  * Component: 扫描注入
  * Resource = (Autowired + Qualifier): 自动注入(默认byName，JSR-250规范定义的注解)
- * Autowired: 自动注入(默认byType，Spring注解)
+ * Autowired: 自动注入实例(默认byType，Spring注解)
  * Qualifier: 注入指定实例(byName)
  * Controller: 控制层
  *

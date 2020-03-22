@@ -4,10 +4,10 @@
 server:
   port: 80
   # 配置https connector（关闭http connector）
-  ssl:
-    key-store: localhttps.cert
-    key-alias: tomcathttps
-    key-store-password: qing3gan
+#  ssl:
+#    key-store: localhttps.cert
+#    key-alias: tomcathttps
+#    key-store-password: qing3gan
 # 类型安全配置
 book1:
   name: 红楼梦
@@ -33,7 +33,7 @@ book2:
         - 鲁智深
         - 李逵
 spring:
-  # profile优先级：配置文件 -> application
+  # profile优先级：args -> 配置文件 -> application
   profiles:
     active: dev
   # 响应编码配置
@@ -75,12 +75,12 @@ spring:
   datasource:
     one:
       type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:mysql:///multi_source_1?useSSL=false
+      url: jdbc:mysql://192.168.37.1:3306/multi_source_1?useSSL=false
       username: root
       password: root
     two:
       type: com.alibaba.druid.pool.DruidDataSource
-      url: jdbc:mysql:///multi_source_2?useSSL=false
+      url: jdbc:mysql://192.168.37.1:3306/multi_source_2?useSSL=false
       username: root
       password: root
   jpa:
