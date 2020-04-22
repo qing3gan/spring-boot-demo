@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.37.1:3306/restful?useSSL=false
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL57Dialect
+    show-sql: true
+  # data rest
+  data:
+    rest:
+      default-page-size: 2
+      page-param-name: page
+      limit-param-name: size
+      sort-param-name: sort
+      base-path: /api
+      return-body-on-create: true
+      return-body-on-update: true
