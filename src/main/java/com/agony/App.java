@@ -9,7 +9,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * JavaSE(C/S) -> JavaEE(B/S) -> Spring(Bean) -> Spring MVC(Web) -> Spring Boot(Auto) -> Spring Cloud(Microservice)
- * SpringBootApplication = EnableAutoConfiguration + SpringBootConfiguration + ComponentScan
+ * SpringBootApplication: Application在根包下，EnableAutoConfiguration + SpringBootConfiguration + ComponentScan
  * EnableAutoConfiguration: 自动化配置项目中的依赖（此项目中为Spring和SpringMVC），exclude除去具体自动化配置类
  * SpringBootConfiguration: 该类是配置类（可配置Bean）
  * Conditional(ConditionalOnClass, ConditionalOnMissingBean): 只有在特定条件满足时才启用一些配置（class位于类路径上才会实例化一个Bean，bean缺失，才会实例化一个Bean）
