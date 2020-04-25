@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="cache" />
         <module name="spring-boot-demo" />
         <module name="RESTful" />
         <module name="dev-test" />
@@ -20,6 +21,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="RESTful" options="-parameters" />
+      <module name="cache" options="-parameters" />
       <module name="devtest" options="-parameters" />
       <module name="spring-boot-demo" options="" />
     </option>
