@@ -1,6 +1,7 @@
 package com.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -29,6 +30,9 @@ import java.util.Map;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    UserService userService;
+
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -36,25 +40,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("admin").password("$2a$10$pt.tMv6BddM6K8uV27SIquPc0F6EdgOPXC2T54.gCmGhVjg9A7bi.").roles("ADMIN", "USER")
-                .and()
-                .withUser("dba").password("$2a$10$mOQXMy19KN92l/gVK5.oje/p0gCNwwIswfgZNfwy9CeCiTkXFdx3i").roles("ADMIN", "DBA")
-                .and()
-                .withUser("user").password("$2a$10$C1PcNShSyvnHWFyUaSE.v.E.yEmNE0t6TMllA4OyZ0YOF8IyEwNRG").roles("USER")
-                .and()
-                .withUser("other").password("$2a$10$bU6/jiM5pBct8s5RTMCR.eIOAW6ttsY.em7LMAqILWnfKgnwhIz3S").roles("OTHER");
+        //内存用户密码认证
+//        auth.inMemoryAuthentication()
+//                .withUser("admin").password("$2a$10$pt.tMv6BddM6K8uV27SIquPc0F6EdgOPXC2T54.gCmGhVjg9A7bi.").roles("admin", "user")
+//                .and()
+//                .withUser("dba").password("$2a$10$mOQXMy19KN92l/gVK5.oje/p0gCNwwIswfgZNfwy9CeCiTkXFdx3i").roles("admin", "dba")
+//                .and()
+//                .withUser("user").password("$2a$10$C1PcNShSyvnHWFyUaSE.v.E.yEmNE0t6TMllA4OyZ0YOF8IyEwNRG").roles("user")
+//                .and()
+//                .withUser("other").password("$2a$10$bU6/jiM5pBct8s5RTMCR.eIOAW6ttsY.em7LMAqILWnfKgnwhIz3S").roles("other");
+
+        //数据库用户密码认证
+        auth.userDetailsService(userService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**")
-                .hasRole("ADMIN")
+                .hasRole("admin")
                 .antMatchers("/user/**")
-                .access("hasAnyRole('ADMIN','USER')")
+                .access("hasAnyRole('admin','user')")
                 .antMatchers("/dba/**")
-                .access("hasRole('ADMIN') and hasRole('DBA')")
+                .access("hasRole('admin') and hasRole('dba')")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -111,7 +119,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             http.antMatcher("/other/hello").authorizeRequests()
-                    .anyRequest().hasRole("OTHER");
+                    .anyRequest().hasRole("other");
         }
     }
 }

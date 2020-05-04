@@ -11,7 +11,7 @@ import java.util.List;
  * ORM：Object Relational Mapping（对象关系映射，通过使用描述对象和数据库之间映射的元数据，将面向对象语言程序中的对象自动持久化到关系数据库中）
  * JPA：Java Persistence API（ORM规范，Hibernate实现）
  * Spring Data：简化数据库访问，规范方法名称，减少数据库访问层代码（SQL，NoSQL）
- * JPA -> Spring Data JPA -> Hibernate
+ * JPA（简便） -> Spring Data JPA -> Hibernate/MyBatis(灵活）
  * JpaRepository：增删改查，分页查询，排序查询
  * JPQL：Java Persistence Query Language（面向对象表达式语言，绑定SQL，可移植，:属性，？索引）
  * Query：自定义查询（缓存）
