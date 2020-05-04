@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cache" />
-        <module name="spring-boot-demo" />
         <module name="RESTful" />
-        <module name="dev-test" />
+        <module name="security" />
+        <module name="cache" />
         <module name="devtest" />
+        <module name="spring-boot-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +23,7 @@
       <module name="RESTful" options="-parameters" />
       <module name="cache" options="-parameters" />
       <module name="devtest" options="-parameters" />
+      <module name="security" options="-parameters" />
       <module name="spring-boot-demo" options="" />
     </option>
   </component>
