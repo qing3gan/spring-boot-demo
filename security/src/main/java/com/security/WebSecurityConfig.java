@@ -6,12 +6,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -20,9 +24,11 @@ import java.util.Map;
 /**
  * WebSecurityConfigurerAdapter: 自定义Security配置
  * AuthenticationManagerBuilder: 账户认证
- * HttpSecurity: HTTP请求授权
+ * HttpSecurity: HTTP请求授权，ANT风格（URLs通配符?,*,**）
  * OtherSecurityConfig: 静态内部类多HttpSecurity配置（Authentication会被覆盖）
  * EnableGlobalMethodSecurity: 全局方法安全配置（pre调用前，post调用后，secured角色）
+ * RoleHierarchy: 角色继承表达式
+ * FilterSecurityInterceptor: 动态权限配置拦截器（动态权限配置 + 角色匹配）
  *
  * @author agony
  * @date 2020/5/3 22:29
@@ -36,6 +42,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        String hierarchy = "ROLE_dba > ROLE_admin ROLE_admin > ROLE_user";
+        roleHierarchy.setHierarchy(hierarchy);
+        return roleHierarchy;
     }
 
     @Override
@@ -57,14 +71,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**")
-                .hasRole("admin")
-                .antMatchers("/user/**")
-                .access("hasAnyRole('admin','user')")
-                .antMatchers("/dba/**")
-                .access("hasRole('admin') and hasRole('dba')")
-                .anyRequest()
-                .authenticated()
+//                .antMatchers("/admin/**")
+//                .hasRole("admin")
+//                .antMatchers("/user/**")
+//                .access("hasAnyRole('admin','user')")
+//                .antMatchers("/dba/**")
+//                .access("hasRole('admin') and hasRole('dba')")
+//                .anyRequest()
+//                .authenticated()
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O o) {
+                        o.setSecurityMetadataSource(filterInvocationSecurityMetadataSource());
+                        o.setAccessDecisionManager(accessDecisionManager());
+                        return o;
+                    }
+                })
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/login")
@@ -121,5 +143,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             http.antMatcher("/other/hello").authorizeRequests()
                     .anyRequest().hasRole("other");
         }
+    }
+
+    @Bean
+    CustomFilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource() {
+        return new CustomFilterInvocationSecurityMetadataSource();
+    }
+
+    @Bean
+    CustomAccessDecisionManager accessDecisionManager() {
+        return new CustomAccessDecisionManager();
     }
 }

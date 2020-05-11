@@ -18,12 +18,12 @@ public class MethodService {
         return "hello admin";
     }
 
-    @PreAuthorize("hasRole('ADMIN') and hasRole('DBA')")
+    @PreAuthorize("hasRole('admin') and hasRole('DBA')")
     public String dba() {
         return "hello dba";
     }
 
-    @PostAuthorize("hasAnyRole('ADMIN','DBA','USER')")
+    @PostAuthorize("hasAnyRole('admin','dba','user')")
     public String user() {
         return "hello user";
     }
