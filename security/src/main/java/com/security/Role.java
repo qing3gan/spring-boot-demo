@@ -3,6 +3,8 @@ package com.security;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * desc
  *
@@ -11,7 +13,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class Role {
+public class Role implements Serializable {
     private Integer id;
     private String name;
     private String nameZh;
