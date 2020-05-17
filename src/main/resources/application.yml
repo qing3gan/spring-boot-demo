@@ -55,22 +55,22 @@ spring:
       max-request-size: 10MB
       resolve-lazily: false
   # 单数据源
-#  datasource:
-#    type: com.alibaba.druid.pool.DruidDataSource
-#    url: jdbc:mysql:///demo?useSSL=false
-##    url: jdbc:mysql:///jpa?useSSL=false
-#    username: root
-#    password: root
-#  jpa:
-#    show-sql: true
-#    database: mysql
-#    hibernate:
-#      # 项目启动时根据实体类更新数据库中对应的表
-#      ddl-auto: update
-#    properties:
-#      hiernate:
-#        # 数据库方言
-#        dialect: org.hibernate.dialect.MySQL57Dialect
+  #  datasource:
+  #    type: com.alibaba.druid.pool.DruidDataSource
+  #    url: jdbc:mysql:///demo?useSSL=false
+  ##    url: jdbc:mysql:///jpa?useSSL=false
+  #    username: root
+  #    password: root
+  #  jpa:
+  #    show-sql: true
+  #    database: mysql
+  #    hibernate:
+  #      # 项目启动时根据实体类更新数据库中对应的表
+  #      ddl-auto: update
+  #    properties:
+  #      hiernate:
+  #        # 数据库方言
+  #        dialect: org.hibernate.dialect.MySQL57Dialect
   # 多数据源
   datasource:
     one:
@@ -94,16 +94,16 @@ spring:
           auto: update
   redis:
     # 单数据源
-#    database: 0
-#    host: 192.168.37.130
-#    port: 6379
-#    password: root
-#    jedis:
-#      pool:
-#        max-active: 8
-#        max-idle: 8
-#        max-wait: -1ms
-#        min-idle: 8
+    #    database: 0
+    #    host: 192.168.37.130
+    #    port: 6379
+    #    password: root
+    #    jedis:
+    #      pool:
+    #        max-active: 8
+    #        max-idle: 8
+    #        max-wait: -1ms
+    #        min-idle: 8
     cluster:
       ports:
         - 8001

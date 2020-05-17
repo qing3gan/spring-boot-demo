@@ -35,7 +35,7 @@ public class Book {
     @Column(name = "book_author", nullable = false)
     private String author;
     @JsonIgnore
-    @Column(name = "book_price" , nullable = false)
+    @Column(name = "book_price", nullable = false)
     protected Float price;
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Transient

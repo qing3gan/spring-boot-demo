@@ -19,7 +19,7 @@ public class AppTests {
     BookDao bookDao;
 
     @Test
-    public void contextLoads(){
+    public void contextLoads() {
         bookDao.getBookById(1L);
         bookDao.getBookById(1L);
         bookDao.deleteBookById(1L);

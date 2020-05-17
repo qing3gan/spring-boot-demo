@@ -3,6 +3,7 @@
     <words>
       <w>authc</w>
       <w>shiro</w>
+      <w>sockjs</w>
     </words>
   </dictionary>
 </component>

@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2020/4/21 22:39
  */
 @CrossOrigin
-@RepositoryRestResource(path = "bs" , collectionResourceRel = "bs", itemResourceRel = "b")
+@RepositoryRestResource(path = "bs", collectionResourceRel = "bs", itemResourceRel = "b")
 public interface BookRepository extends JpaRepository<Book, Long> {
     @RestResource(path = "author", rel = "author")
     List<Book> findByAuthorContains(@Param("author") String author);
