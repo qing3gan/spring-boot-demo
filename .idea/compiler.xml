@@ -11,6 +11,7 @@
         <module name="websocket" />
         <module name="security" />
         <module name="devtest" />
+        <module name="message" />
         <module name="cache" />
         <module name="spring-boot-demo" />
       </profile>
@@ -24,6 +25,7 @@
       <module name="RESTful" options="-parameters" />
       <module name="cache" options="-parameters" />
       <module name="devtest" options="-parameters" />
+      <module name="message" options="-parameters" />
       <module name="security" options="-parameters" />
       <module name="spring-boot-demo" options="" />
       <module name="websocket" options="-parameters" />
