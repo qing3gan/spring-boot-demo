@@ -1,11 +1,7 @@
 package com.message;
 
-import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import javax.jms.Queue;
 
 /**
  * ActiveMQQueue: Active消息队列
@@ -19,8 +15,8 @@ public class App {
         SpringApplication.run(App.class);
     }
 
-    @Bean
-    Queue queue() {
-        return new ActiveMQQueue("amq");
-    }
+//    @Bean
+//    Queue queue() {
+//        return new ActiveMQQueue("amq");
+//    }
 }

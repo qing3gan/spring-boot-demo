@@ -5,3 +5,8 @@ spring:
       trust-all: true
     user: admin
     password: admin
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
