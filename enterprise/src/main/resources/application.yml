@@ -8,3 +8,12 @@ spring:
     properties:
       mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
       mail.debug: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql:///batch?useSSL=false
+    username: root
+    password: root
+    schema: classpath:/org/springframework/batch/core/schema-mysql.sql
+  batch:
+    initialize-schema: always
+    job.enabled: false

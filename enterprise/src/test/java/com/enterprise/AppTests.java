@@ -7,11 +7,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.StringWriter;
 
 /**
@@ -77,5 +79,14 @@ public class AppTests {
         context.setVariable("test", "test");
         String mail = templateEngine.process("mailtemplate.html", context);
         mailService.sendHtmlMail(from, to, cc, subject, mail);
+    }
+
+    @Test
+    public void classpath(){
+        try {
+            System.out.println(new ClassPathResource(".").getFile().getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
