@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="RESTful" />
         <module name="websocket" />
+        <module name="enterprise" />
         <module name="security" />
         <module name="devtest" />
         <module name="message" />
@@ -25,6 +26,7 @@
       <module name="RESTful" options="-parameters" />
       <module name="cache" options="-parameters" />
       <module name="devtest" options="-parameters" />
+      <module name="enterprise" options="-parameters" />
       <module name="message" options="-parameters" />
       <module name="security" options="-parameters" />
       <module name="spring-boot-demo" options="" />

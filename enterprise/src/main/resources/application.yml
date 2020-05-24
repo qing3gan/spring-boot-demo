@@ -1,0 +1,10 @@
+spring:
+  mail:
+    host: smtp
+    port:
+    username:
+    password:
+    default-encoding: utf-8
+    properties:
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.debug: true
