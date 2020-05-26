@@ -160,7 +160,7 @@
         </dependency>
     </dependencies>
 
-    <!--maven-lifecycle(clean,build,site)-phase(接口)-plugin:goal(插件)[mvn phase]-->
+    <!--maven-lifecycle(clean,build,site)-phase(接口)-plugin(插件):goal(实现)[mvn phase]-->
     <build>
         <plugins>
             <!--spring maven插件，可直接打成jar包，mvn package-->
@@ -193,6 +193,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <!--classpath-->
         <resources>
             <resource>
                 <directory>src/main/java</directory>

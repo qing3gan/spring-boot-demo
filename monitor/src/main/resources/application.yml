@@ -1,0 +1,30 @@
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: when_authorized
+      roles: admin
+  info:
+    git:
+      mode: full
+# actuator info
+info:
+  # @maven@
+  app:
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+  author:
+    name: name
+    email: email
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: admin
