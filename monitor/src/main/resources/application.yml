@@ -23,8 +23,12 @@ info:
     name: name
     email: email
 spring:
-  security:
-    user:
-      name: admin
-      password: admin
-      roles: admin
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+#      roles: admin
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
