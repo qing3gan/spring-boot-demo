@@ -13,6 +13,7 @@
         <module name="security" />
         <module name="devtest" />
         <module name="message" />
+        <module name="build" />
         <module name="cache" />
         <module name="spring-boot-demo" />
         <module name="server" />
